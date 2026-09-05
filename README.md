@@ -44,9 +44,5 @@ $ full stack web development
 </p>
 
 <p align="center">
-  <img src="https://github-profile-trophy.vercel.app/?username=RibZu&theme=nord&row=1&margin-w=8" />
-</p>
-
-<p align="center">
   <sub>&gt; the plan continues_</sub>
 </p>
