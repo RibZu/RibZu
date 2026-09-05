@@ -35,14 +35,5 @@ $ full stack web development
 ### > STATS
 
 <p align="center">
-  <img width="49%" src="https://github-readme-stats.vercel.app/api?username=RibZu&show_icons=true&hide_border=true&bg_color=0D1321&title_color=8FB4DC&icon_color=5B84B1&text_color=DCE6F0" />
-  <img width="49%" src="https://github-readme-stats.vercel.app/api/top-langs/?username=RibZu&layout=compact&hide_border=true&bg_color=0D1321&title_color=8FB4DC&text_color=DCE6F0" />
-</p>
-
-<p align="center">
-  <img width="98%" src="https://github-readme-streak-stats.herokuapp.com/?user=RibZu&hide_border=true&background=0D1321&border=0D1321&stroke=2A3A55&ring=5B84B1&fire=8FB4DC&currStreakNum=DCE6F0&sideNums=DCE6F0&currStreakLabel=8FB4DC&sideLabels=5B84B1&dates=5B84B1" />
-</p>
-
-<p align="center">
-  <sub>&gt; the plan continues_</sub>
+  <img width="70%" src="https://github-readme-streak-stats.herokuapp.com/?user=RibZu&hide_border=true&background=0D1321&border=0D1321&stroke=2A3A55&ring=5B84B1&fire=8FB4DC&currStreakNum=DCE6F0&sideNums=DCE6F0&currStreakLabel=8FB4DC&sideLabels=5B84B1&dates=5B84B1" />
 </p>
