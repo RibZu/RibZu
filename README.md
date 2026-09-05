@@ -1,7 +1,7 @@
 <h1 align="center">&lt; RibZu /&gt;</h1>
 
 <p align="center">
-  <img src="https://readme-typing-svg.demolab.com/?font=VT323&size=26&pause=1200&color=00E5FF&center=true&vCenter=true&width=560&lines=%3E%3E+ACCESSING_THE_VAULT...;SOFTWARE_DEVELOPER;BACKEND+%7C+NETWORKING+%7C+FULLSTACK" />
+  <img src="https://readme-typing-svg.demolab.com/?font=VT323&size=26&pause=1200&color=00E5FF&center=true&vCenter=true&width=560&lines=%3E%3E+ACCESSING_THE_VAULT...;ALWAYS_LEARNING_SOMETHING_NEW;SOFTWARE_DEVELOPER;BACKEND+%7C+FULLSTACK" />
 </p>
 
 <p align="center">
@@ -27,9 +27,7 @@
 
 ```
 $ backend development & API design
-$ networking & IT infrastructure
 $ full stack web development
-$ always learning something new
 ```
 
 ---
@@ -42,7 +40,11 @@ $ always learning something new
 </p>
 
 <p align="center">
-  <img width="70%" src="https://github-readme-streak-stats.herokuapp.com/?user=RibZu&theme=synthwave&hide_border=true" />
+  <img width="98%" src="https://github-readme-streak-stats.herokuapp.com/?user=RibZu&theme=synthwave&hide_border=true" />
+</p>
+
+<p align="center">
+  <img src="https://github-profile-trophy.vercel.app/?username=RibZu&theme=radical&no-frame=true&no-bg=true&row=1&margin-w=8" />
 </p>
 
 <p align="center">
