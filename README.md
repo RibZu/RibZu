@@ -4,10 +4,6 @@
   <img src="https://readme-typing-svg.demolab.com/?font=VT323&size=26&pause=1200&color=00E5FF&center=true&vCenter=true&width=560&lines=%3E%3E+ACCESSING_THE_VAULT...;SOFTWARE_DEVELOPER;BACKEND+%7C+FULLSTACK" />
 </p>
 
-<p align="center">
-  <em>Always learning something new.</em>
-</p>
-
 ---
 
 ### > STACK
@@ -26,8 +22,8 @@
 ### > SKILLS
 
 ```
-$ backend development & API design
-$ full stack web development
+$ Always learning something new
+
 ```
 
 ---
