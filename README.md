@@ -32,5 +32,5 @@ $ Always learning something new
 ### > STATS
 
 <p align="center">
-  <img width="70%" src="https://github-readme-streak-stats.herokuapp.com/?user=RibZu&hide_border=true&background=0D1321&border=0D1321&stroke=2A3A55&ring=5B84B1&fire=8FB4DC&currStreakNum=DCE6F0&sideNums=DCE6F0&currStreakLabel=8FB4DC&sideLabels=5B84B1&dates=5B84B1" />
+  <img width="100%" alt="GitHub stats for RibZu" src="assets/stats.svg" />
 </p>
