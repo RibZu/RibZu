@@ -156,7 +156,10 @@ const shortDate = (dateStr) => {
   const [, m, d] = dateStr.split('-').map(Number);
   return `${MONTHS[m - 1]} ${d}`;
 };
-const longDate = (dateStr) => `${shortDate(dateStr)}, ${dateStr.slice(0, 4)}`;
+
+// Ancho aproximado de un texto en Barlow 500 (a 14px), para colocar elementos en fila sin poder medir la fuente.
+const textWidth = (str, size = 14) =>
+  [...str].reduce((w, ch) => w + (/[A-Z]/.test(ch) ? 8.6 : /[0-9,]/.test(ch) ? 7.2 : ch === '%' ? 10.5 : ch === ' ' ? 3.4 : /[ilj.,:'|]/.test(ch) ? 3.6 : /[mw]/.test(ch) ? 10.6 : 6.9), 0) * (size / 14);
 
 // Rueda técnica con anillos concéntricos, como la foto de perfil. Dibujo de línea, sin datos.
 function wheel(cx, cy, R) {
@@ -179,8 +182,10 @@ function wheel(cx, cy, R) {
     nodes += `<circle cx="${nx}" cy="${ny}" r="6" fill="${C.bg}" stroke="${C.rule}" stroke-width="1.5"/>`;
   }
   return `<g aria-hidden="true">
+<g clip-path="url(#rings)">
 <circle cx="${cx}" cy="${cy}" r="${R + 34}" fill="none" stroke="${C.grid}" stroke-opacity=".22" stroke-width="1.5"/>
 <circle cx="${cx}" cy="${cy}" r="${R + 62}" fill="none" stroke="${C.grid}" stroke-opacity=".14" stroke-width="1.5"/>
+</g>
 <circle cx="${cx}" cy="${cy}" r="${R}" fill="none" stroke="${C.grid}" stroke-width="1.5"/>
 <path d="${ticks}" stroke="${C.grid}" stroke-width=".8" fill="none"/>
 <path d="${spokes}" stroke="${C.rule}" stroke-width="2.5" stroke-linecap="round" fill="none"/>
@@ -203,7 +208,6 @@ async function render(data) {
   const BAR_W = Math.round(PITCH * 0.6 * 10) / 10;
   const BASE_Y = 204;
   const MAX_H = 104;
-  const B = 6.5; // ancho medio aproximado de un carácter de Barlow a 13px
 
   // Datos sueltos: últimos 12 meses.
   const windowStart = addDays(today, -364);
@@ -265,11 +269,12 @@ async function render(data) {
   for (const l of langs) {
     const w = Math.max(4, l.share * seg);
     const pct = `${Math.max(1, Math.round(l.share * 100))}%`;
-    const nameColor = l.color === LANG_OTHER || l.color === C.dim ? C.grid : l.color;
     langBar += `<rect x="${x.toFixed(1)}" y="${langTop}" width="${w.toFixed(1)}" height="6" rx="1.5" fill="${l.color}"><title>${esc(l.name)} ${(l.share * 100).toFixed(1)}%</title></rect>`;
     x += w + 3;
-    legend += `<text x="${lx}" y="${langTop + 28}" fill="${nameColor}" font-size="14">${esc(l.name)} <tspan fill="${C.grid}">${pct}</tspan></text>`;
-    lx += (l.name.length + pct.length + 1) * (B + 0.4) + 26;
+    // Cada nombre lleva el cuadrito del color de su segmento, así la barra y la leyenda se leen juntas.
+    legend += `<rect x="${lx}" y="${langTop + 19}" width="9" height="9" rx="2" fill="${l.color}"/>` +
+      `<text x="${lx + 15}" y="${langTop + 28}" fill="${C.text}" font-size="14">${esc(l.name)} <tspan fill="${C.grid}">${pct}</tspan></text>`;
+    lx += 15 + textWidth(`${l.name} ${pct}`) + 28;
   }
 
   // Tres datos sueltos
@@ -283,7 +288,7 @@ async function render(data) {
   let fx = PAD;
   for (const [value, rest] of facts) {
     factsSvg += `<text x="${fx}" y="${factsY}" font-size="14"><tspan fill="${C.text}">${esc(value)}</tspan><tspan fill="${C.rule}">${esc(rest)}</tspan></text>`;
-    fx += (value.length + rest.length) * (B + 0.4) + 40;
+    fx += textWidth(value + rest) + 48;
   }
 
   const H = factsY + 30;
@@ -305,6 +310,7 @@ async function render(data) {
   </style>
   <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse"><path d="M40 0H0V40" fill="none" stroke="${C.grid}" stroke-opacity=".09"/></pattern>
   <clipPath id="card"><rect width="${W}" height="${H}" rx="10"/></clipPath>
+  <clipPath id="rings"><rect width="${W}" height="${langTop - 14}"/></clipPath>
 </defs>
 <rect width="${W}" height="${H}" rx="10" fill="${C.bg}"/>
 <g clip-path="url(#card)">
@@ -313,7 +319,6 @@ ${wheel(W - PAD - WHEEL_R - 14, 140, WHEEL_R)}
 </g>
 <rect x=".5" y=".5" width="${W - 1}" height="${H - 1}" rx="10" fill="none" stroke="${C.grid}" stroke-opacity=".3"/>
 <text x="${PAD}" y="40" fill="${C.grid}" font-size="13">$ vault --log --since 12m</text>
-<text x="${W - PAD}" y="40" fill="${C.grid}" font-size="13" text-anchor="end">updated ${longDate(today)}</text>
 <text x="${PAD}" y="80" fill="${C.text}" font-family="${DISPLAY}" font-weight="600" font-size="34">${num(yearTotal)} contributions</text>
 <line x1="${PAD}" y1="${BASE_Y + 0.5}" x2="${PAD + CHART_W}" y2="${BASE_Y + 0.5}" stroke="${C.grid}" stroke-opacity=".5"/>
 ${bars}
